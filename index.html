@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Mapping</title>
+ 
+</head>
+<style>
+    .container{
+        display: flex;
+        
+    }
+    #details{
+        width: 100%;
+        text-align: center;
+        font-size: 22px; 
+        font-weight: bold;
+        padding: 5px; 
+        border-radius: 5px;
+
+    }
+</style>
+<body>
+    <div  style="display: flex;">
+        <img src="https://i.postimg.cc/PrXxNsFP/carimg2.jpg" usemap="#image_map">
+    <map name="image_map">
+        <area target="" alt="Front Mirror" title="Front Mirror" coords="188,37,360,26,549,36,596,140,362,140,150,139" shape="poly" id="front">
+        <area target="" alt="Side mirror(right)" title="Side mirror(right)"   coords="49,129,77,115,133,111,121,159,69,156,54,144" shape="poly" id="rightMirror">
+        <area target="" alt="Side mirror(left)" title="Side mirror(left)"   coords="610,113,663,111,698,132,680,158,623,157" shape="poly" id="leftMirror">
+        <area target="" alt="HeadLight (right)" title="HeadLight (right)"   coords="78,235,114,225,158,226,218,235,250,277,242,285,126,278,85,259" shape="poly" id="frontRightHeadLight">
+        <area target="" alt="HeadLight (left)" title="HeadLight (left)"   coords="493,285,520,236,559,228,597,223,635,226,670,234,662,259,619,279" shape="poly" id="frontLeftHeadLight">
+    </map>
+    <div id="details" style="width: 100%; text-align: center; font-size: 22px; font-weight: bold;"></div>
+    </div>
+    <button onclick="testing()">enter</button>
+</body>
+</html>
+
+<script>
+    function testing(){
+        document.getElementById('details').textContent = 'Front Mirror';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+const details = document.getElementById('details');
+const areas = document.querySelectorAll('area');
+
+areas.forEach(area => {
+    area.addEventListener('click', function(event) {
+        event.preventDefault();
+        const areaId = this.id; 
+        console.log('Clicked area:', areaId); 
+        switch (areaId) {
+            case 'front':
+                details.textContent = 'Front Mirror';
+                break;
+            case 'rightMirror':
+                details.textContent = 'Side mirror(right)';
+                break;
+            case 'leftMirror':
+                details.textContent = ' Side mirror(left)';
+                break;
+            case 'frontLeftHeadLight':
+                details.textContent = 'Front left headlight';
+                break;
+            case 'frontRightHeadLight':
+                details.textContent = 'Front right headlight';
+                break;
+            default:
+                details.textContent = 'Unknown view';
+                break;
+
+        }
+    });
+});
+});
+
+</script>
+<!-- 
+    <!DOCTYPE html>
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map with Details</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+
+        #image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            display: none;
+            z-index: 100;
+        }
+
+        #details p {
+            margin: 0;
+        }
+
+        #image {
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img id="image" src="../carimg.jpg" usemap="#mymap">
+        <map name="mymap">
+            <area shape="rect" coords="78,18,722,428"  href="#" onclick="showDetails('Area 1')" alt="Area 1">
+            <area shape="circle" coords="908,7,1546,422" href="#" onclick="showDetails('Area 2')" alt="Area 2">
+            <area shape="poly" coords="111,512,1556,848" href="#" onclick="showDetails('Area 3')" alt="Area 3">
+        </map>
+        <div id="details">
+            <p id="detail-text"></p>
+        </div>
+    </div>
+
+    <script>
+        const areaDetails = {
+  "Area 1": "This is the description for Area 1.",
+  "Area 2": "This is the description for Area 2.",
+  "Area 3": "This is the description for Area 3."
+};
+function showDetails(areaName) {
+  const detailsBox = document.getElementById('details');
+  const detailText = document.getElementById('detail-text');
+  detailsBox.style.display = 'block';
+  detailText.textContent = `${areaName} details will be displayed here.`;
+}
+
+    </script>
+</body>
+</html> -->
